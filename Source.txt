@@ -1,0 +1,12 @@
+1. Create virtual environment
+python3 -m venv venv
+
+2. Activate it
+source venv/bin/activate
+
+-> ((venv) ) sandy@Sandys-MacBook-Air fastapi-todo % 
+
+---
+
+# Dependencies setup
+pip install fastapi uvicorn sqlalchemy psycopg2-binary python-dotenv 
