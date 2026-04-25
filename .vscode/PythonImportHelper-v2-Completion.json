@@ -271,7 +271,7 @@
         "kind": 5,
         "importPath": "backend.main",
         "description": "backend.main",
-        "peekOfCode": "app = FastAPI()\n# Configure CORS\norigins = [\n    \"http://localhost:5173\",\n    \"http://127.0.0.1:5173\",\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,",
+        "peekOfCode": "app = FastAPI()\n# Configure CORS\norigins = [\n    \"http://localhost:5173\",\n    \"http://127.0.0.1:5173\",\n]\n# Add production frontend URL from environment\nfrontend_url = os.getenv(\"FRONTEND_URL\")\nif frontend_url:\n    origins.append(frontend_url)",
         "detail": "backend.main",
         "documentation": {}
     },
@@ -280,7 +280,16 @@
         "kind": 5,
         "importPath": "backend.main",
         "description": "backend.main",
-        "peekOfCode": "origins = [\n    \"http://localhost:5173\",\n    \"http://127.0.0.1:5173\",\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],",
+        "peekOfCode": "origins = [\n    \"http://localhost:5173\",\n    \"http://127.0.0.1:5173\",\n]\n# Add production frontend URL from environment\nfrontend_url = os.getenv(\"FRONTEND_URL\")\nif frontend_url:\n    origins.append(frontend_url)\napp.add_middleware(\n    CORSMiddleware,",
+        "detail": "backend.main",
+        "documentation": {}
+    },
+    {
+        "label": "frontend_url",
+        "kind": 5,
+        "importPath": "backend.main",
+        "description": "backend.main",
+        "peekOfCode": "frontend_url = os.getenv(\"FRONTEND_URL\")\nif frontend_url:\n    origins.append(frontend_url)\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)",
         "detail": "backend.main",
         "documentation": {}
     },

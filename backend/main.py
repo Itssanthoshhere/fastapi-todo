@@ -8,6 +8,8 @@ Base.metadata.create_all(bind=engine)  # Create tables based on the models
 
 from fastapi.middleware.cors import CORSMiddleware
 
+import os
+
 app = FastAPI()
 
 # Configure CORS
@@ -15,6 +17,11 @@ origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
+
+# Add production frontend URL from environment
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    origins.append(frontend_url)
 
 app.add_middleware(
     CORSMiddleware,
