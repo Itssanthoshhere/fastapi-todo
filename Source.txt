@@ -10,3 +10,6 @@ source venv/bin/activate
 
 # Dependencies setup
 pip install fastapi uvicorn sqlalchemy psycopg2-binary python-dotenv 
+
+pip install pydantic
+
