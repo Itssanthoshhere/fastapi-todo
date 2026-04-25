@@ -161,6 +161,14 @@
         "documentation": {}
     },
     {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
         "label": "BaseModel",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -263,7 +271,16 @@
         "kind": 5,
         "importPath": "backend.main",
         "description": "backend.main",
-        "peekOfCode": "app = FastAPI()\n# Dependency to get DB session\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db  # return db\n    finally:\n        db.close()\n# POST - Create TODO\n@app.post(\"/todos\", response_model=TodoSchema)",
+        "peekOfCode": "app = FastAPI()\n# Configure CORS\norigins = [\n    \"http://localhost:5173\",\n    \"http://127.0.0.1:5173\",\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,",
+        "detail": "backend.main",
+        "documentation": {}
+    },
+    {
+        "label": "origins",
+        "kind": 5,
+        "importPath": "backend.main",
+        "description": "backend.main",
+        "peekOfCode": "origins = [\n    \"http://localhost:5173\",\n    \"http://127.0.0.1:5173\",\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],",
         "detail": "backend.main",
         "documentation": {}
     },
