@@ -1,8 +1,10 @@
 from fastapi import FastAPI, Depends
 from schemas import TodoCreate, Todo as TodoSchema
 from sqlalchemy.orm import Session
-from database import SessionLocal
+from database import Base, engine, SessionLocal
 from models import Todo
+
+Base.metadata.create_all(bind=engine)  # Create tables based on the models
 
 app = FastAPI()
 
