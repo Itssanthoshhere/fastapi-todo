@@ -8,8 +8,6 @@ Base.metadata.create_all(bind=engine)  # Create tables based on the models
 
 from fastapi.middleware.cors import CORSMiddleware
 
-import os
-
 app = FastAPI()
 
 # Configure CORS
