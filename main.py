@@ -26,3 +26,9 @@ def create(todo: TodoCreate, db: Session = Depends(get_db)):
     db.commit()  # Commit the transaction to save the new Todo to the database
     db.refresh(db_todo)  # Refresh the instance to get the generated ID and other fields
     return db_todo  # Return the created Todo
+
+
+# GET - Read All TODOs
+@app.get("/todos", response_model=list[TodoSchema])
+def read_todos(db: Session = Depends(get_db)):
+    return db.query(Todo).all()  # Return the list of Todo items

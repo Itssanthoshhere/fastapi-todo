@@ -210,7 +210,16 @@
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def create(todo: TodoCreate, db: Session = Depends(get_db)):\n    db_todo = Todo(**todo.dict())  # Create a new Todo instance from the request data\n    db.add(db_todo)  # Add the new Todo to the session\n    db.commit()  # Commit the transaction to save the new Todo to the database\n    db.refresh(db_todo)  # Refresh the instance to get the generated ID and other fields\n    return db_todo  # Return the created Todo",
+        "peekOfCode": "def create(todo: TodoCreate, db: Session = Depends(get_db)):\n    db_todo = Todo(**todo.dict())  # Create a new Todo instance from the request data\n    db.add(db_todo)  # Add the new Todo to the session\n    db.commit()  # Commit the transaction to save the new Todo to the database\n    db.refresh(db_todo)  # Refresh the instance to get the generated ID and other fields\n    return db_todo  # Return the created Todo\n# GET - Read All TODOs\n@app.get(\"/todos\", response_model=list[TodoSchema])\ndef read_todos(db: Session = Depends(get_db)):\n    return db.query(Todo).all()  # Return the list of Todo items",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "read_todos",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def read_todos(db: Session = Depends(get_db)):\n    return db.query(Todo).all()  # Return the list of Todo items",
         "detail": "main",
         "documentation": {}
     },
